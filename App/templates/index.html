@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Price Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header text-center">
+                <h1 class="display-5">Property Price Predictor</h1>
+            </div>
+            
+            <div class="card-body">
+                <form id="predictionForm" enctype="multipart/form-data">
+                    <div class="row">
+                        <!-- Left -->
+                        <div class="col-md-6">
+                            <h4 class="section-title">Property Overview</h4>
+                            
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Property Title/Description</label>
+                                <textarea class="form-control" id="title" name="title" rows="2" required placeholder="Describe the property (e.g., '3BR Modern Villa in Surabaya')"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Property Image</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                                <img id="imagePreview" src="#" alt="Property image preview">
+                            </div>
+                            
+                            <div class="feature-group">
+                                <h5>Location</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="City" class="form-label">City</label>
+                                        <select class="form-select" id="City" name="City" required>
+                                            <option value="" disabled selected>Select City</option>
+                                            <option value="0">Malang</option>
+                                            <option value="1">Sidoarjo</option>
+                                            <option value="2">Surabaya</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="District" class="form-label">District</label>
+                                        <select class="form-select" id="District" name="District" required>
+                                            <option value="" disabled selected>Select District</option>
+                                            <!-- All district options -->
+                                            <option value="0">Blimbing</option>
+                                            <option value="1">Dau</option>
+                                            <option value="2">Dinoyo</option>
+                                            <option value="3">Dukuh Pakis</option>
+                                            <option value="4">Gedangan</option>
+                                            <option value="5">Griya Shanta</option>
+                                            <option value="6">Gubeng</option>
+                                            <option value="7">Jatimulyo</option>
+                                            <option value="8">Kedungkandang</option>
+                                            <option value="9">Kenjeran</option>
+                                            <option value="10">Lowokwaru</option>
+                                            <option value="11">Malang Kota</option>
+                                            <option value="12">Merjosari</option>
+                                            <option value="13">Mojolangu</option>
+                                            <option value="14">Mulyorejo</option>
+                                            <option value="15">Pakis</option>
+                                            <option value="16">Pakuwon City</option>
+                                            <option value="17">Pakuwon Indah</option>
+                                            <option value="18">Permata Jingga</option>
+                                            <option value="19">Rungkut</option>
+                                            <option value="20">Sidoarjo</option>
+                                            <option value="21">Soekarno Hatta</option>
+                                            <option value="22">Sukolilo</option>
+                                            <option value="23">Sukun</option>
+                                            <option value="24">Surabaya Kota</option>
+                                            <option value="25">Tenggilis Mejoyo</option>
+                                            <option value="26">Tlogomas</option>
+                                            <option value="27">Wagir</option>
+                                            <option value="28">Waru</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Latitude" class="form-label">Latitude</label>
+                                        <input type="number" step="any" class="form-control" id="Latitude" name="Latitude" placeholder="e.g., -7.2575" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Longitude" class="form-label">Longitude</label>
+                                        <input type="number" step="any" class="form-control" id="Longitude" name="Longitude" placeholder="e.g., 112.7521" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-group">
+                                <h5>Property Size</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Luas_Tanah" class="form-label">Luas Tanah (m²)</label>
+                                        <input type="number" min="0" step="any" class="form-control" id="Luas_Tanah" name="Luas Tanah" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Luas_Bangunan" class="form-label">Luas Bangunan (m²)</label>
+                                        <input type="number" min="0" step="any" class="form-control" id="Luas_Bangunan" name="Luas Bangunan" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-group">
+                                <h5>Basic Features</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Kamar_Tidur" class="form-label">Kamar Tidur</label>
+                                        <input type="number" min="0" class="form-control" id="Kamar_Tidur" name="Kamar Tidur" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Kamar_Mandi" class="form-label">Kamar Mandi</label>
+                                        <input type="number" min="0" class="form-control" id="Kamar_Mandi" name="Kamar Mandi" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Jumlah_Lantai" class="form-label">Jumlah Lantai</label>
+                                        <input type="number" min="1" class="form-control" id="Jumlah_Lantai" name="Jumlah Lantai" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Tahun_Dibangun" class="form-label">Tahun Dibangun</label>
+                                        <input type="number" min="1900" max="2025" class="form-control" id="Tahun_Dibangun" name="Tahun Dibangun" placeholder="e.g., 2010" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right -->
+                        <div class="col-md-6">
+                            <h4 class="section-title">Property Details</h4>
+                            
+                            <div class="feature-group">
+                                <h5>Housing Complex</h5>
+                                <div class="mb-3">
+                                    <label for="Nama_Perumahan" class="form-label">Nama Perumahan</label>
+                                    <select class="form-select" id="Nama_Perumahan" name="Nama Perumahan" required>
+                                        <option value="" disabled selected>Select Housing Complex</option>
+                                        <option value="0">-</option>
+                                        <option value="1">Alana Regency Cemandi</option>
+                                        <option value="2">Amesta living</option>
+                                        <option value="3">Anggrek Residence</option>
+                                        <option value="4">Atrani Residence</option>
+                                        <option value="5">Babatan Pantai</option>
+                                        <option value="6">Barata Jaya</option>
+                                        <option value="7">Baruk Utara</option>
+                                        <option value="8">Bratang Binangun</option>
+                                        <option value="9">Citra Garden</option>
+                                        <option value="10">Citra Garden Sidoarjo</option>
+                                        <option value="11">Citra Harmoni</option>
+                                        <option value="12">Citra garden</option>
+                                        <option value="13">D'gardenia City</option>
+                                        <option value="14">DE IMPERIAL ESTATE</option>
+                                        <option value="15">Darmo Permai</option>
+                                        <option value="72">Pakuwon City</option>
+                                        <option value="112">Puri Surya Jaya</option>
+                                        <option value="115">Rungkut Asri</option>
+                                        <option value="118">Rungkut Mapan</option>
+                                        <option value="119">Rungkut Menanggal</option>
+                                        <option value="128">Sutorejo Prima</option>
+                                        <option value="140">Unknown</option>
+                                        <option value="158">Sukolilo Dian Regency</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-group">
+                                <h5>Parking & Electricity</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Carpots" class="form-label">Carports</label>
+                                        <input type="number" min="0" class="form-control" id="Carpots" name="Carpots" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Garasi" class="form-label">Garasi</label>
+                                        <input type="number" min="0" class="form-control" id="Garasi" name="Garasi" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Daya_Listrik" class="form-label">Daya Listrik (Watt)</label>
+                                    <input type="number" min="0" step="100" class="form-control" id="Daya_Listrik" name="Daya Listrik" placeholder="e.g., 2200" required>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-group">
+                                <h5>Property Specifications</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Sertifikat" class="form-label">Sertifikat</label>
+                                        <select class="form-select" id="Sertifikat" name="Sertifikat" required>
+                                            <option value="" disabled selected>Select Certificate Type</option>
+                                            <option value="0">HGB</option>
+                                            <option value="1">Hak Pakai</option>
+                                            <option value="2">Lain-lain</option>
+                                            <option value="3">SHM</option>
+                                            <option value="4">Strata Title</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Interior" class="form-label">Interior</label>
+                                        <select class="form-select" id="Interior" name="Interior" required>
+                                            <option value="" disabled selected>Select Interior Type</option>
+                                            <option value="0">Full Furnished</option>
+                                            <option value="1">Semi Furnished</option>
+                                            <option value="2">Unfurnished</option>
+                                            <option value="3">Unknown</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Orientasi_Bangunan" class="form-label">Orientasi Bangunan</label>
+                                    <select class="form-select" id="Orientasi_Bangunan" name="Orientasi Bangunan" required>
+                                        <option value="" disabled selected>Select Building Orientation</option>
+                                        <option value="0">Barat</option>
+                                        <option value="1">Barat Daya</option>
+                                        <option value="2">Barat Laut</option>
+                                        <option value="3">Hook</option>
+                                        <option value="4">Selatan</option>
+                                        <option value="5">Timur</option>
+                                        <option value="6">Timur Laut</option>
+                                        <option value="7">Unknown</option>
+                                        <option value="8">Utara</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">Predict Property Price</button>
+                            </div>
+                            
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                            </div>
+                            
+                            <div id="resultBox" class="result-box">
+                                <h4>Estimated Property Price</h4>
+                                <h2 id="prediction" class="text-success"></h2>
+                                <p class="text-muted">This is an AI-generated estimate based on the provided information.</p>
+                            </div>
+                            
+                            <div id="errorBox" class="error-box">
+                                <h4>Error</h4>
+                                <p id="errorMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

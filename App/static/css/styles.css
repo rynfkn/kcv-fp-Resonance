@@ -1,0 +1,116 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #6f42c1;
+    --light-bg: #f8f9fa;
+    --border-radius: 10px;
+}
+
+body {
+    background-color: var(--light-bg);
+    padding: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.header {
+    padding: 25px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 4px;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+}
+
+.feature-group {
+    background-color: rgba(248, 249, 250, 0.7);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.feature-group h5 {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+.section-title {
+    color: #495057;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.result-box, .error-box {
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.result-box {
+    border-left: 5px solid #28a745;
+}
+
+.error-box {
+    border-left: 5px solid #dc3545;
+}
+
+.progress {
+    height: 8px;
+    margin: 20px 0;
+    display: none;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: var(--border-radius);
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #e9ecef;
+}
+
+footer {
+    color: #6c757d;
+    font-size: 14px;
+}
